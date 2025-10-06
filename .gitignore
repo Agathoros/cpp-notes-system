@@ -1,0 +1,41 @@
+# Исполняемые файлы
+*.exe
+*.out
+*.app
+notes_app
+test_notes
+test_welcome
+welcome
+debug_test
+
+# Объектные файлы
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+
+# Файлы отладки
+*.pdb
+*.ilk
+
+# Временные файлы
+*.tmp
+*.temp
+*~
+.DS_Store
+Thumbs.db
+
+# Файлы IDE
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# Файлы данных (если не нужны в репозитории)
+*.txt
+notes.txt
+test_notes.txt
+
+# Сборочные файлы
+build/
+cmake-build-*/
