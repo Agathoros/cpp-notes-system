@@ -1,0 +1,38 @@
+name: C++ CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++ libgtest-dev cmake
+        
+    - name: Build project
+      run: |
+        g++ -g note.cpp notes_manager.cpp notes_app.cpp -o notes_app
+        
+    - name: Build tests
+      run: |
+        g++ -g note.cpp notes_manager.cpp test_notes.cpp -o test_notes -lgtest -lpthread
+        
+    - name: Run tests
+      run: |
+        ./test_notes
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: notes-app
+        path: notes_app
